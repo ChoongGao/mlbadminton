@@ -10,4 +10,5 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 ## Goals
 - Gather data using pandas for both types of swings
 - Train the model using scikit-learn
+- Test the final model
 - Compare and evaluate models with differing amounts of training data
