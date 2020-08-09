@@ -8,7 +8,8 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - Witmotion BWT61
 
 ## Goals
-- Gather data using pandas for both types of swings
+- Gather data for both types of swings
+- Use pandas to format data into dataframes
 - Train the model using scikit-learn
 - Test the final model
 - Compare and evaluate models with differing amounts of training data
