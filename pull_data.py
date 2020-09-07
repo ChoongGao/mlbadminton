@@ -11,10 +11,19 @@ CSV_DELIMITER = '\t' # Delimiter for raw csv file
 NUM_IRR = 1 # Number of irrelevant rows at top of raw csv file to be removed
 NEW_LINE = '' # Desired newline for new csv
 
-# Asks user which type of swing is being pulled
-SWING_TYPE = input("Please enter the type of swing being pulled (smash, clear, drop): ")
 
 if __name__ == '__main__':
+
+    # Asks user which type of swing is being pulled
+    while True:
+        try:
+            SWING_TYPE = input("Please enter the type of swing being pulled (smash, clear, drop): ")
+            if SWING_TYPE not in ['smash', 'clear', 'drop']:
+                raise NameError('Swing type not found, please try again')
+            break
+        except NameError as e:
+            print(e)
+
     # Walks to IMU Diretory
     for root,dir,files in os.walk(PATH_TO_IMU):
         for name in files:
