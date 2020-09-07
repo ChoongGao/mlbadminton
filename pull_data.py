@@ -29,16 +29,15 @@ if __name__ == '__main__':
         for name in files:
             # Change to csv file
             new_name = name.split('.')[0] + '.csv'
-            if name == '200809160919.txt':
-                # Reads in old txt, removes buffer data, saves to new csv in raw_csv
-                old_txt = open(os.path.join(root, name), 'r')
-                new_csv = open(os.path.join(PATH_TO_RAW_CSV, SWING_TYPE, new_name), 'w', newline='')
-                csv_reader = csv.reader(old_txt, delimiter=CSV_DELIMITER)
-                csv_writer = csv.writer(new_csv)
-                for i, row in enumerate(csv_reader):
-                    if i >= NUM_IRR:
-                        csv_writer.writerow(row)
-                old_txt.close()
-                new_csv.close()
+            # Reads in old txt, removes buffer data, saves to new csv in raw_csv
+            old_txt = open(os.path.join(root, name), 'r')
+            new_csv = open(os.path.join(PATH_TO_RAW_CSV, SWING_TYPE, new_name), 'w', newline='')
+            csv_reader = csv.reader(old_txt, delimiter=CSV_DELIMITER)
+            csv_writer = csv.writer(new_csv)
+            for i, row in enumerate(csv_reader):
+                if i >= NUM_IRR:
+                    csv_writer.writerow(row)
+            old_txt.close()
+            new_csv.close()
 
             
