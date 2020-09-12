@@ -8,7 +8,7 @@ import numpy as np
 
 # Constants
 PATH_TO_RAW_CSV = './raw_csv'
-NUM_POINTS = 150
+NUM_POINTS = 100
 
 
 if __name__ == '__main__':
@@ -36,10 +36,28 @@ if __name__ == '__main__':
         sample = np.random.choice(np.array(swing_list), size=NUM_EACH, replace=False)
         sampled_swings[SWING_TYPE] = sample
     
+    # Converts samples to dataframes
+    sampled_df = {}
+    for SWING_TYPE in sampled_swings:
+        df_list = []
+        for SWING_PATH in sampled_swings[SWING_TYPE]:
+            df = pd.read_csv(SWING_PATH)
+            sub_df = df[['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)']][:NUM_POINTS]
+            df_list.append(sub_df)
+        sampled_df[SWING_TYPE] = df_list
+
     
-
-            
-
-
-
+    # Plots the sampled swings
+    for SWING_TYPE in sampled_swings:
+        print(SWING_TYPE)
+        x = np.arange(0, NUM_POINTS)
+        for df in sampled_df[SWING_TYPE]:
+            arr = df.to_numpy()
+            plt.figure()
+            plt.plot(x, arr[:,0], label='wx(deg/s)')
+            plt.plot(x, arr[:,1], label='wy(deg/s)')
+            plt.plot(x, arr[:,2], label='wz(deg/s)')
+            plt.legend()
+            plt.show()
+            plt.close()
         
