@@ -26,6 +26,15 @@ if __name__ == '__main__':
         except ValueError as e:
             print('Please enter only integers')
 
+    # Asks user to look at acceleration or angular velocity
+    # while True:
+    #     try:
+    #         TYPE_ = (input("Please enter the number of each swing you would like to peek (1-3): "))
+    #         if NUM_EACH < 0 or NUM_EACH > 3:
+    #             raise NameError('Please enter an integer above 0 and below 4')
+    #         break
+    #     except NameError as e:
+    #         print(e)
 
     # Goes through each swing
     sampled_swings = {}
@@ -46,11 +55,12 @@ if __name__ == '__main__':
         df_list = []
         for SWING_PATH in sampled_swings[swing_type]:
             df = pd.read_csv(SWING_PATH)
-            sub_df = df[['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)']][:NUM_POINTS]
+            sub_df = df[['ax(g)', 'ay(g)', 'az(g)']][:NUM_POINTS]
+            # sub_df = df[['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)']][:NUM_POINTS]
             df_list.append(sub_df)
         sampled_df[swing_type] = df_list
 
-    
+
     # Plots the sampled swings
     fig = plt.figure(figsize=(8, 8))
     fig.subplots_adjust(hspace=0.4, wspace=0.4)
@@ -59,9 +69,12 @@ if __name__ == '__main__':
         for col, df in enumerate(sampled_df[swing_type]):
             arr = df.to_numpy()
             sub = fig.add_subplot(len(SWING_TYPES), NUM_EACH, (row*NUM_EACH)+col+1)
-            plt.plot(x, arr[:,0], label='wx(deg/s)')
-            sub.plot(x, arr[:,1], label='wy(deg/s)')
-            sub.plot(x, arr[:,2], label='wz(deg/s)')
+            # plt.plot(x, arr[:,0], label='wx(deg/s)')
+            # sub.plot(x, arr[:,1], label='wy(deg/s)')
+            # sub.plot(x, arr[:,2], label='wz(deg/s)')
+            plt.plot(x, arr[:,0], label='ax(g)')
+            sub.plot(x, arr[:,1], label='ay(g)')
+            sub.plot(x, arr[:,2], label='az(g)')
             sub.title.set_text(swing_type + ' ' + str(col+1))
             sub.legend(loc='lower left', fontsize='xx-small')
     # Show the figure
