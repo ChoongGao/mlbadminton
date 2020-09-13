@@ -14,7 +14,7 @@ SWING_TYPES = ['smash', 'drop', 'clear'] # List of the possible swing types
 
 if __name__ == '__main__':
 
-    # Asks user how many of each swing type to peek at
+    # Asks user how many of each swing type to peek at, takes in values from 1-3 for ease of view
     while True:
         try:
             NUM_EACH = int(input("Please enter the number of each swing you would like to peek (1-3): "))
@@ -27,14 +27,17 @@ if __name__ == '__main__':
             print('Please enter only integers')
 
 
-    # Goes through each swing 
+    # Goes through each swing
     sampled_swings = {}
     for swing_type in SWING_TYPES:
         swing_list = []
+        # Adds every swing of the swing type into a list
         for root,dir,files in os.walk(os.path.join(PATH_TO_RAW_CSV, swing_type)):
             for name in files:
                 swing_list.append(os.path.join(root, name))
+        # Randomly samples from the list without replacement
         sample = np.random.choice(np.array(swing_list), size=NUM_EACH, replace=False)
+        # Adds the sampled swings to the dictionary under the swing type
         sampled_swings[swing_type] = sample
     
     # Converts samples to dataframes
@@ -62,5 +65,5 @@ if __name__ == '__main__':
             sub.title.set_text(swing_type + ' ' + str(col+1))
             sub.legend(loc='lower left', fontsize='xx-small')
     # Show the figure
-    plt.savefig('Peek.png')
+    # plt.savefig('Peek.png')
     plt.show()
