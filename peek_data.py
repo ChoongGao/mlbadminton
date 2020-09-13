@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     
     # Plots the sampled swings
-    fig = plt.figure()
+    fig = plt.figure(figsize=(8, 8))
     fig.subplots_adjust(hspace=0.4, wspace=0.4)
     for row, swing_type in enumerate(SWING_TYPES):
         x = np.arange(0, NUM_POINTS)
@@ -62,4 +62,5 @@ if __name__ == '__main__':
             sub.title.set_text(swing_type + ' ' + str(col+1))
             sub.legend(loc='lower left', fontsize='xx-small')
     # Show the figure
+    plt.savefig('Peek.png')
     plt.show()
