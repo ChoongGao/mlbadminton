@@ -18,7 +18,7 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - [x] Gather around 50 swings for each swing type
 - [x] Add raw CSV files into [raw_csv](https://github.com/ChoongGao/mlbadminton/tree/master/raw_csv) using [pull_data](https://github.com/ChoongGao/mlbadminton/blob/master/pull_data.py)
 - [x] Visualize data for swing types with [peek_data](https://github.com/ChoongGao/mlbadminton/blob/master/peek_data.py) using matplotlib (sample visualization shown below)
-![Sample Visualization](https://github.com/ChoongGao/mlbadminton/blob/master/Peek.png)
+![Sample Visualization](https://github.com/ChoongGao/mlbadminton/blob/master/images/angular_velocity.png)
 
 ## Next steps
 - [ ] Use data visualization to observe patterns and find significant features
