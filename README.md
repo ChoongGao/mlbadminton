@@ -14,16 +14,22 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - Test the final model
 - Compare and evaluate models with differing amounts of training data
 
-## Current Steps
+## Current and Past Steps
 - [x] Gather around 50 swings for each swing type
 - [x] Add raw CSV files into [raw_csv](https://github.com/ChoongGao/mlbadminton/tree/master/raw_csv) using [pull_data](https://github.com/ChoongGao/mlbadminton/blob/master/pull_data.py)
-- [x] Visualize data for swing types with [peek_data](https://github.com/ChoongGao/mlbadminton/blob/master/peek_data.py) using matplotlib (sample visualization shown below)
+- [x] Visualize data for swing types with [peek_data](https://github.com/ChoongGao/mlbadminton/blob/master/peek_data.py) using matplotlib (sample visualization shown below, more can be found in [images](https://github.com/ChoongGao/mlbadminton/tree/master/images))
 ![Sample Visualization](https://github.com/ChoongGao/mlbadminton/blob/master/images/angular_velocity.png)
+- [x] Use data visualization to observe patterns and find significant features
+- [x] Convert raw CSV files to raw dataframes using Pandas
+- [x] Refine the dataframes and extract features into arrays of significantly smaller dimension using [extract_features](https://github.com/ChoongGao/mlbadminton/blob/master/extract_features.py)
+- [x] Train models with 5-fold cross validation using the extracted features with [train_models](https://github.com/ChoongGao/mlbadminton/blob/master/train_models.py)
+- [x] Trained models: **logistic regression**, **k-nearest neighbors**
+- [x] Calculate the success rate of different models
 
 ## Next steps
-- [ ] Use data visualization to observe patterns and find significant features
-- [ ] Convert raw CSV files to raw dataframes using Pandas
-- [ ] Refine the dataframes and extract features into new dataframes of significantly smaller dimension
-- [ ] Train various models using the refined dataframes
-- [ ] Calculate the success rate of models with varying amounts of data and/or different extracted features
+- [ ] Train more models of different types (ex: neural networks, random forest)
+- [ ] Perform further analysis of data and try extracting other features
+- [ ] Calculate the success rates of models when given various amounts of data
+- [ ] Calculate the success rates of models when different features are extracted
+- [ ] Calculate the success rates of models when raw data is given (no feature extraction)
 - [ ] Compare the models and make conclusions
