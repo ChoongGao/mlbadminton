@@ -9,10 +9,13 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 
 ## Goals
 - Gather data for all types of swings
-- Use pandas to format data into dataframes
-- Train the model using scikit-learn
-- Test the final model
-- Compare and evaluate models with differing amounts of training data
+- Use pandas and numpy to clean the data
+- Visualize the data using matplotlib and observe patterns
+- Leverage physical intuition and pattern recognition to extract features
+- Train different models using scikit-learn, keeping in mind good practices such as k-fold cross validation
+- Calculate success rates for various situations (different models, amount of swing data, extracted features or lack thereof, etc)
+- Compare and evaluate models for these situations
+- Make educated conclustions based on model evaluations
 
 ## Current and Past Steps
 - [x] Gather around 50 swings for each swing type
