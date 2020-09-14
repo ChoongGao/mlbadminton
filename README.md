@@ -1,7 +1,7 @@
 # mlbadminton
 
 ## Project Overview
-In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learning to classify and learn to differentiate between three badminton swings: the **smash**, the **clear**, and the **drop**.
+In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learning to classify and learn to differentiate between three badminton swings: the **smash**, the **clear**, and the **drop**. I'll also be developing my skills in data handling/visualization. I'm hoping to leverage my physical understanding of badminton swing mechanics and also pattern recognition to perform feature engineering, resulting in dimension reduction and enhanced model training.
 
 ## Required Items
 - Badminton racket
