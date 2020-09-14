@@ -10,6 +10,8 @@ import numpy as np
 PATH_TO_RAW_CSV = './raw_csv' # Path to raw csv data
 NUM_POINTS = 120 # Num entries for each data type to include
 SWING_TYPES = ['smash', 'drop', 'clear'] # List of the possible swing types
+DATA_TYPE = '' # Initial of the data type the user wants to peek
+DATA_TYPE_TO_COLUMNS = {'a': ['ax(g)', 'ay(g)', 'az(g)'], 'v': ['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)'], 'A': ['ax(g)', 'ay(g)', 'az(g)'], 'V': ['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)']} # Maps user input to headers of corresponding data
 
 
 if __name__ == '__main__':
@@ -27,14 +29,14 @@ if __name__ == '__main__':
             print('Please enter only integers')
 
     # Asks user to look at acceleration or angular velocity
-    # while True:
-    #     try:
-    #         TYPE_ = (input("Please enter the number of each swing you would like to peek (1-3): "))
-    #         if NUM_EACH < 0 or NUM_EACH > 3:
-    #             raise NameError('Please enter an integer above 0 and below 4')
-    #         break
-    #     except NameError as e:
-    #         print(e)
+    while True:
+        try:
+            DATA_TYPE = (input("Would you like to compare acceleration (a) or angular velocity (v)? "))
+            if DATA_TYPE not in ['a', 'v', 'A', 'V']:
+                raise NameError('Please choose either \'a\' or \'v\'')
+            break
+        except NameError as e:
+            print(e)
 
     # Goes through each swing
     sampled_swings = {}
@@ -55,28 +57,29 @@ if __name__ == '__main__':
         df_list = []
         for SWING_PATH in sampled_swings[swing_type]:
             df = pd.read_csv(SWING_PATH)
-            sub_df = df[['ax(g)', 'ay(g)', 'az(g)']][:NUM_POINTS]
-            # sub_df = df[['wx(deg/s)', 'wy(deg/s)', 'wz(deg/s)']][:NUM_POINTS]
+            # Reads in the data that the user requested
+            sub_df = df[DATA_TYPE_TO_COLUMNS[DATA_TYPE]][:NUM_POINTS]
             df_list.append(sub_df)
+        # Adds the swings to the dictionary of swings and pairs to the swing type
         sampled_df[swing_type] = df_list
 
 
     # Plots the sampled swings
     fig = plt.figure(figsize=(8, 8))
     fig.subplots_adjust(hspace=0.4, wspace=0.4)
+    labels = DATA_TYPE_TO_COLUMNS[DATA_TYPE]
+    # Iterates through different swing types
     for row, swing_type in enumerate(SWING_TYPES):
         x = np.arange(0, NUM_POINTS)
+        # Iterates through the swings of the current type
         for col, df in enumerate(sampled_df[swing_type]):
             arr = df.to_numpy()
             sub = fig.add_subplot(len(SWING_TYPES), NUM_EACH, (row*NUM_EACH)+col+1)
-            # plt.plot(x, arr[:,0], label='wx(deg/s)')
-            # sub.plot(x, arr[:,1], label='wy(deg/s)')
-            # sub.plot(x, arr[:,2], label='wz(deg/s)')
-            plt.plot(x, arr[:,0], label='ax(g)')
-            sub.plot(x, arr[:,1], label='ay(g)')
-            sub.plot(x, arr[:,2], label='az(g)')
+            # Plots the data in the dataframe
+            plt.plot(x, arr[:,0], label=labels[0])
+            sub.plot(x, arr[:,1], label=labels[1])
+            sub.plot(x, arr[:,2], label=labels[2])
             sub.title.set_text(swing_type + ' ' + str(col+1))
             sub.legend(loc='lower left', fontsize='xx-small')
     # Show the figure
-    # plt.savefig('Peek.png')
     plt.show()
