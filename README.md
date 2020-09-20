@@ -30,7 +30,7 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - [x] Calculate the success rate of different models
 
 ## Next steps
-- [ ] Train more models of different types (ex: neural networks, random forest)
+- [ ] Train more models of different types (ex: neural networks)
 - [ ] Perform further analysis of data and try extracting other features
 - [ ] Calculate the success rates of models when given various amounts of data
 - [ ] Calculate the success rates of models when different features are extracted
