@@ -4,7 +4,7 @@
 import os
 import pandas as pd
 import numpy as np
-from sklearn import model_selection, linear_model, neighbors
+from sklearn import model_selection, linear_model, neighbors, ensemble
 
 # Constants
 PATH_TO_TRAINING_DIRECTORY = './extracted_data' # Path to training data
@@ -28,6 +28,7 @@ if __name__ == '__main__':
     # Will track scoring of different models
     logistic_scores = 0
     neighbor_scores = 0
+    forest_scores = 0
     for train_index, test_index in k_fold.split(X):
         # Splits into training and testing data
         X_train, X_test = X[train_index], X[test_index]
@@ -43,10 +44,18 @@ if __name__ == '__main__':
         nei_model.fit(X_train, y_train)
         neighbor_scores += nei_model.score(X_test, y_test)
 
+        # Training random forest model
+        forest_model = ensemble.RandomForestClassifier()
+        forest_model.fit(X_train, y_train)
+        print(forest_model.score(X_test, y_test))
+        forest_scores += forest_model.score(X_test, y_test)
+
     # Calculates average score of models
     avg_log_score = logistic_scores/NUM_SPLITS
     avg_nei_score = neighbor_scores/NUM_SPLITS
+    avg_forest_score = forest_scores/NUM_SPLITS
 
     # Display results
     print('Average success rate of logistic regression model: {}%'.format(avg_log_score*100))
     print('Average success rate of k nearest neighbors model: {}%'.format(avg_nei_score*100))
+    print('Average success rate of random forest model: {}%'.format(avg_nei_score*100))

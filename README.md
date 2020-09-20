@@ -26,7 +26,7 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - [x] Convert raw CSV files to raw dataframes using Pandas
 - [x] Refine the dataframes and extract features into arrays of significantly smaller dimension using [extract_features](https://github.com/ChoongGao/mlbadminton/blob/master/extract_features.py)
 - [x] Train models with 5-fold cross validation using the extracted features with [train_models](https://github.com/ChoongGao/mlbadminton/blob/master/train_models.py)
-- [x] Trained models: **logistic regression**, **k-nearest neighbors**
+- [x] Trained models: **logistic regression**, **k-nearest neighbors**, **random forest**
 - [x] Calculate the success rate of different models
 
 ## Next steps
