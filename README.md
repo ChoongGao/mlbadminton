@@ -18,7 +18,8 @@ In this project, I'll use an IMU (Inertial Measurement Unit) and Machine Learnin
 - **Make educated conclustions** based on model evaluations
 
 ## Current and Past Steps
-- [x] Gather around 50 swings for each swing type
+- [x] Gather around 50 swings for each swing type  
+<img src="https://github.com/ChoongGao/mlbadminton/blob/master/images/smash.gif" height="300"></img>
 - [x] Add raw CSV files into [raw_csv](https://github.com/ChoongGao/mlbadminton/tree/master/raw_csv) using [pull_data](https://github.com/ChoongGao/mlbadminton/blob/master/pull_data.py)
 - [x] Visualize data for swing types with [peek_data](https://github.com/ChoongGao/mlbadminton/blob/master/peek_data.py) using matplotlib (sample visualization shown below, more can be found in [images](https://github.com/ChoongGao/mlbadminton/tree/master/images))
 ![Sample Visualization](https://github.com/ChoongGao/mlbadminton/blob/master/images/angular_velocity.png)
